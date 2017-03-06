@@ -32,10 +32,10 @@ for i in xrange(len(input_pins)):
 def write_door_state(gpio_id, val):
   if val==0:
     bot.send_message(telegram_id, "Openning")
-    writeDoorState(time.strftime("%d.%m.%Y %H:%M:%S"), 'open')
+    writeDoorState(time.strftime("%d.%m.%Y %H:%M:%S"), 'Open')
   else:
     bot.send_message(telegram_id, "Closing")
-    writeDoorState(time.strftime("%d.%m.%Y %H:%M:%S"), 'close')
+    writeDoorState(time.strftime("%d.%m.%Y %H:%M:%S"), 'Close')
 
 RPIO.add_interrupt_callback(24, write_door_state,pull_up_down=RPIO.PUD_DOWN,threaded_callback=True, debounce_timeout_ms=50) 
 RPIO.wait_for_interrupts() 
