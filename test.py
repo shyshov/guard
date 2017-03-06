@@ -29,14 +29,11 @@ def writeDoorState(when, state):
 for i in xrange(len(input_pins)): 
   RPIO.setup(input_pins[i], RPIO.IN, pull_up_down=RPIO.PUD_DOWN)
 
-door = open('/home/roman/door', 'a',0)
 def write_door_state(gpio_id, val):
   if val==0:
-    door.write (time.strftime("%d.%m.%Y %H:%M:%S")+"\tOpening\r\n")
     bot.send_message(telegram_id, "Openning")
     writeDoorState(time.strftime("%d.%m.%Y %H:%M:%S"), 'open')
   else:
-    door.write (time.strftime("%d.%m.%Y %H:%M:%S")+"\tClosing\r\n")
     bot.send_message(telegram_id, "Closing")
     writeDoorState(time.strftime("%d.%m.%Y %H:%M:%S"), 'close')
 
